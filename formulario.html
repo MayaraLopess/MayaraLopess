@@ -5,9 +5,11 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="estilo1.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
 	<title>formulário</title>
+
 </head>
+
 
 <body>
 	<div id="ma">
@@ -15,18 +17,35 @@
 		<img id="menu" src="imagens/menu.png">
 	</div>
 	<br>
-	<form action="cadastro.php" method="post" autocomplete="on">
+	<!--Criando um formulário-->
+	<form action="cadastro.php" method="post" onsubmit="return validacao()">
+
+		<!--Criando um campo para o nome no formulário-->
 		<label for="name">Nome completo:</label>
 		<br>
-		<input type="text" id="name" name="name" value="Nome">
-		<br><br>
-		<label for="name">Data Nascimento:</label>
-		<input type="date" id="date" name="date" value="Enviar">
+		<input type="text" id="name" name="name" class="obrigatorio" value="Teste">
 		<br><br>
 
-		
-		<input type="submit" name="enviar" value="Enviar">
+		<!--Criando um campo de data de nascimento-->
+		<label for="nascimento">Data de nascimento:</label>
+		<br>
+		<input type="date" id="date" class="obrigatorio" name="date">
 		<br><br>
+
+		<!--Criando um campo para um e-mail-->
+		<label for="email">E-mail:</label>
+		<br>
+		<input type="email" id="email" class="obrigatorio" name="email">
+		<br><br>
+
+		<!--Criando um campo para uma senha-->
+		<label for="senha">Senha:</label>
+		<br>
+		<input type="password" id="password" class="obrigatorio" name="password">
+		<br><br>
+
+		<!--Botão para acionar o action do formulário-->
+		<input type="submit" name="enviar" id="enviar" value="Enviar" onclick="return validacao()">
 	</form>
 	<div id="logos">
 		<a href="https://www.tiktok.com/pt-BR/"><img class="im" src="imagens/tiktok.png" alt="Logo do Tiktok"></a>
@@ -38,6 +57,37 @@
 	<footer>
 		<p id="oi">Copyright © 2022</p>
 	</footer>
+
+	<script type="text/javascript">
+
+		function validacao() 
+		{
+            var dados = document.getElementsByClassName ('obrigatorio')
+            var tamanho = dados.length
+            var temAlguemVazio = true;
+
+            for (var i = 0; i< tamanho; i++)
+            {
+                if (!(dados[i].value ==''))
+                {
+                    temAlguemVazio= true
+                    break
+                }
+            }
+			
+            if (temAlguemVazio)
+			{
+				alert('Por Favor, preencha todos os campos.')
+				return false
+			}
+			else 
+			{
+				return true
+			}
+		}
+
+	</script>
+
 </body>
 
 </html>
